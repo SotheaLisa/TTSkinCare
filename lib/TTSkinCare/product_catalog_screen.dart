@@ -1,13 +1,12 @@
-// product_catalog_screen.dart
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'cart_logic.dart';
-import 'layout_config_logic.dart';
+import '../cart_logic.dart';
+import 'dark_logic.dart';
 import 'product_detail_screen.dart';
-import 'product_model.dart';
-import 'skincare_service.dart';
+import '../model/product_model.dart';
+import '../service/skincare_service.dart';
 
 class ProductCatalogScreen extends StatefulWidget {
   const ProductCatalogScreen({super.key});
@@ -47,12 +46,13 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
     super.dispose();
   }
 
+  // ✅ FIX 1: pass cat directly instead of converting to slug
   void _onCategorySelected(String cat) {
     setState(() {
       _selectedCategory = cat;
       _futureData = cat == 'All'
           ? _service.readAll()
-          : _service.readByCategory(cat.toLowerCase().replaceAll(' ', '-'));
+          : _service.readByCategory(cat);
     });
   }
 
@@ -105,9 +105,11 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
       floatingActionButton: _showFab
           ? FloatingActionButton(
               shape: const CircleBorder(),
-              onPressed: () => _scroller.animateTo(0,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut),
+              onPressed: () => _scroller.animateTo(
+                0,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              ),
               child: const Icon(Icons.arrow_upward),
             )
           : null,
@@ -137,12 +139,12 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
 
   Widget _buildBody(LayoutConfigLogic config) {
     return RefreshIndicator(
+      // ✅ FIX 2: pass _selectedCategory directly instead of converting to slug
       onRefresh: () async {
         setState(() {
           _futureData = _selectedCategory == 'All'
               ? _service.readAll()
-              : _service.readByCategory(
-                  _selectedCategory.toLowerCase().replaceAll(' ', '-'));
+              : _service.readByCategory(_selectedCategory);
         });
       },
       child: FutureBuilder<List<SkincareProduct>>(
@@ -307,8 +309,7 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
               ],
               const Spacer(),
               Icon(Icons.star, size: 13, color: Colors.amber.shade600),
-              Text(' ${item.rating}',
-                  style: const TextStyle(fontSize: 11)),
+              Text(' ${item.rating}', style: const TextStyle(fontSize: 11)),
             ],
           ),
         ),
@@ -372,8 +373,7 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
                         fontSize: 14, fontWeight: FontWeight.w500)),
                 const SizedBox(height: 4),
                 Text(item.category.name,
-                    style:
-                        const TextStyle(fontSize: 11, color: Colors.grey)),
+                    style: const TextStyle(fontSize: 11, color: Colors.grey)),
                 const SizedBox(height: 6),
                 Row(
                   children: [
@@ -530,7 +530,8 @@ class _CartSheet extends StatelessWidget {
                         );
                         cart.clear();
                       },
-                child: Text('Checkout  •  \$${cart.totalPrice.toStringAsFixed(2)}'),
+                child: Text(
+                    'Checkout  •  \$${cart.totalPrice.toStringAsFixed(2)}'),
               ),
             ),
           ),

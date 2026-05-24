@@ -1,5 +1,5 @@
-import 'product_model.dart';
-import 'skincare_repository.dart';
+import '../model/product_model.dart';
+import '../repo/skincare_repository.dart';
 
 class SkincareService {
   final SkincareRepository _repo = SkincareRepository();

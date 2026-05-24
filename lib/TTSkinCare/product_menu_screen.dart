@@ -1,9 +1,9 @@
-// shop_parent_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'product_catalog_screen.dart';
-import 'search_skincare_screen.dart';
-import 'shop_settings_screen.dart';
+import 'product_search_screen.dart';
+import 'setting_screen.dart';
 
 class ShopParentScreen extends StatelessWidget {
   const ShopParentScreen({super.key});

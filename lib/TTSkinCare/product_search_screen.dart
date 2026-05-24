@@ -1,13 +1,12 @@
-// search_skincare_screen.dart
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'cart_logic.dart';
-import 'layout_config_logic.dart';
+import 'dark_logic.dart';
 import 'product_detail_screen.dart';
-import 'product_model.dart';
-import 'skincare_service.dart';
+import '../model/product_model.dart';
+import '../service/skincare_service.dart';
 
 class SearchSkincareScreen extends StatefulWidget {
   const SearchSkincareScreen({super.key});

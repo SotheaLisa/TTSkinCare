@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import 'product_model.dart';
-import 'skincare_api_client.dart';
+import '../model/product_model.dart';
+import '../api/api_client.dart';
 
 class SkincareRepository {
   Future<List<SkincareProduct>> fetchAll() async {

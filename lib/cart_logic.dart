@@ -1,6 +1,6 @@
-// cart_logic.dart
+
 import 'package:flutter/material.dart';
-import 'product_model.dart';
+import 'model/product_model.dart';
 
 class CartItem {
   final SkincareProduct product;

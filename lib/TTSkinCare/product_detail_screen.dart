@@ -1,10 +1,10 @@
-// product_detail_screen.dart
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'cart_logic.dart';
-import 'product_model.dart';
+import '../cart_logic.dart';
+import '../model/product_model.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final SkincareProduct item;

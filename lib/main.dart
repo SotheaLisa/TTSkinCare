@@ -2,12 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cart_logic.dart';
-import 'layout_config_logic.dart';
-import 'shop_parent_screen.dart';
+import 'TTSkinCare/dark_logic.dart';
+import 'TTSkinCare/product_menu_screen.dart';
 
 void main() {
-  // Catches ALL uncaught Flutter/Dart errors and prints them
-  // so you can see exactly what crashes instead of a silent stop.
   runZonedGuarded(() {
     WidgetsFlutterBinding.ensureInitialized();
     FlutterError.onError = (FlutterErrorDetails details) {

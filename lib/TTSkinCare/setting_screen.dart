@@ -1,8 +1,8 @@
-// shop_settings_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'cart_logic.dart';
-import 'layout_config_logic.dart';
+import '../cart_logic.dart';
+import 'dark_logic.dart';
 
 class ShopSettingsScreen extends StatelessWidget {
   const ShopSettingsScreen({super.key});

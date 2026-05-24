@@ -1,5 +1,3 @@
-// product_model.dart
-
 import 'dart:convert';
 
 List<SkincareProduct> skincareProductFromJson(String str) =>
