@@ -46,7 +46,6 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
     super.dispose();
   }
 
-  // ✅ FIX 1: pass cat directly instead of converting to slug
   void _onCategorySelected(String cat) {
     setState(() {
       _selectedCategory = cat;
@@ -139,7 +138,6 @@ class _ProductCatalogScreenState extends State<ProductCatalogScreen> {
 
   Widget _buildBody(LayoutConfigLogic config) {
     return RefreshIndicator(
-      // ✅ FIX 2: pass _selectedCategory directly instead of converting to slug
       onRefresh: () async {
         setState(() {
           _futureData = _selectedCategory == 'All'
